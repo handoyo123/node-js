@@ -1,6 +1,6 @@
 import Users from "../Models/Users.model.js";
 import {Op} from "sequelize";
-import {DATA_IS_FOUND,DATA_IS_NOT_FOUND,SUCCESS,FAILED} from "../Const/const.js";
+import {DATA_IS_FOUND,SUCCESS} from "../Const/const.js";
 
 export const getUsers = async (req, res) => {
     try {
@@ -22,7 +22,7 @@ export const getUsers = async (req, res) => {
         const totalPage = Math.ceil(totalRows / limit);
         const field = req.query.field;
         const sort = req.query.sort;
-        const users = await Users.findByPk(id) ?? await Users.findAll({
+        const users = await Users.findAll({
                 where:{
                     id :id,
                     [Op.or]: [{name:{
