@@ -5,11 +5,12 @@ import moment from "moment";
 const {DataTypes} = Sequelize;
 const Users = db.define('user', {
     id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         get() {
             return this.getDataValue('id');
         },
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,
@@ -47,10 +48,12 @@ const Users = db.define('user', {
             return this.getDataValue('created_by');
         }
     },
-    createdAt: {type: Sequelize.DATE,
+    createdAt: {
+        type: Sequelize.DATE,
         get() {
             return moment(this.getDataValue('createdAt')).format('d-m-Y hh:mm:ss');
-    }},
+        }
+    },
 
 }, {
     freezeTableName: true,

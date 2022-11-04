@@ -5,7 +5,7 @@ import db from "../Configs/Database.js";
 const {DataTypes} = Sequelize;
 
 const Products = db.define('product_services', {
-    id:{type: DataTypes.STRING, primaryKey:true},
+    id:{type: DataTypes.INTEGER, primaryKey:true,autoIncrement: true},
     name: {type: DataTypes.STRING},
     sku: {type: DataTypes.STRING},
     sale_price: {type: DataTypes.STRING},
